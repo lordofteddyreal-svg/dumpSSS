@@ -18,7 +18,7 @@ jobs:
         run: curl -L "${{ inputs.jar_url }}" -o Aurora-orig.jar; ls -lh Aurora-orig.jar
         shell: bash
       - name: Download fabric-loader
-        run: curl -L https://repo1.maven.org/maven2/net/fabricmc/fabric-loader/0.19.5/fabric-loader-0.19.5.jar -o fabric-loader.jar; ls -lh fabric-loader.jar
+        run: curl -L https://maven.fabricmc.net/net/fabricmc/fabric-loader/0.19.5/fabric-loader-0.19.5.jar -o fabric-loader.jar; ls -lh fabric-loader.jar
         shell: bash
       - name: Compile dumper
         run: javac DumpKeys.java

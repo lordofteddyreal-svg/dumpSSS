@@ -21,7 +21,7 @@ jobs:
         run: javac DumpKeys.java
         shell: bash
       - name: Run dump
-        run: java -cp .;Aurora-orig.jar DumpKeys Aurora-orig.jar keys.bin
+        run: java -cp ".;Aurora-orig.jar" DumpKeys Aurora-orig.jar keys.bin
         shell: bash
       - uses: actions/upload-artifact@v4
         with:

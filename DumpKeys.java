@@ -48,7 +48,13 @@ public class DumpKeys {
         System.load(bridgeName);
 
         // грузим Aurora классы из jar
-        java.net.URL[] urls = { jarPath.toUri().toURL() };
+        java.util.List<java.net.URL> _u = new java.util.ArrayList<>();
+_u.add(jarPath.toUri().toURL());
+for (String _f : new String[]{"fabric-loader.jar"}) {
+  java.nio.file.Path _p = java.nio.file.Paths.get(_f);
+  if (java.nio.file.Files.exists(_p)) { _u.add(_p.toUri().toURL()); System.out.println("[dump] +classpath " + _p.toAbsolutePath()); }
+}
+java.net.URL[] urls = _u.toArray(new java.net.URL[0]);
         try (java.net.URLClassLoader cl = new java.net.URLClassLoader(urls, DumpKeys.class.getClassLoader())) {
             Class<?> nb = Class.forName("aurora.fabric.NativeBootstrap", true, cl);
             Method reg = null;

@@ -20,6 +20,9 @@ jobs:
       - name: Download fabric-loader
         run: curl -L https://maven.fabricmc.net/net/fabricmc/fabric-loader/0.16.14/fabric-loader-0.16.14.jar -o fabric-loader.jar; ls -lh fabric-loader.jar; jar tf fabric-loader.jar | grep ClientModInitializer
         shell: bash
+      - name: Debug sources
+        run: ls -lh *.jar *.java; grep -n "classpath" DumpKeys.java || echo "NO PATCH IN RUNNER FILE"
+        shell: bash
       - name: Compile dumper
         run: javac DumpKeys.java
         shell: bash
